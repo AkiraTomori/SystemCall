@@ -103,3 +103,16 @@ uint64 sys_sysinfo(void)
     return -1;
   return 0;
 }
+
+int
+sys_trace(void)
+{
+  int mask;
+  argint(0, &mask);
+
+  if (mask < 0)
+    return -1;
+
+  myproc()->mask = mask;
+  return 0;
+}
